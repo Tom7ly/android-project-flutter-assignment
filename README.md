@@ -26,4 +26,5 @@ Question2 Solution:
 The parameter that controls the behaviour of the snapping is snapPositions
 
 Question3 Solution:
-  
+Both classes provide similiar functionality. However, Inkwell provides visual feedback to the user such as the 'Ripple Effect' while GestureDetector does not.
+On the other hand, GestureDetector adds more control to the class such as dragging horizontally and vertically which Inkwell doesn't allow (not directly).
