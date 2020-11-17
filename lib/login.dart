@@ -25,61 +25,55 @@ class _loginState extends State<login> {
 
     _email = TextEditingController(text: "");
     _password = TextEditingController(text: "");
-    _passwordValidation = TextEditingController(text:"");
+    _passwordValidation = TextEditingController(text: "");
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.red,
-          title: Text('Login Screen'),
+          title: Text('Login Screen',style:TextStyle(color:Colors.white)),
         ),
         body: Builder(
             builder: (context) => Center(
                     child: ListView(children: <Widget>[
                   Container(
-                      alignment: Alignment.bottomCenter,
-                      padding: EdgeInsets.all(100),
+                      padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
                       child: Text(
-                        'LOG IN',
-                        style: TextStyle(color: Colors.red, fontWeight: FontWeight.w500, fontSize: 50),
-                      )),
+                    'Welcome to Startups Name Generator, please log in below',
+                    style: TextStyle( fontSize: 16),
+                  )),
+
                   Container(
                     padding: EdgeInsets.all(10),
                     child: TextField(
                       controller: _email,
                       decoration: InputDecoration(
-                        border: OutlineInputBorder(),
+
                         labelText: 'Email',
                       ),
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
+                    padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
                     child: TextField(
                       obscureText: true,
                       controller: _password,
                       decoration: InputDecoration(
-                        border: OutlineInputBorder(),
+
                         labelText: 'Password',
                       ),
                     ),
                   ),
-                  FlatButton(
-                    onPressed: () {
-                      //forgot password screen
-                    },
-                    textColor: Colors.red,
-                    child: Text('Forgot Password'),
-                  ),
+
                   Container(
-                      alignment: Alignment.bottomCenter,
-                      height: 35,
-                      padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                      alignment: Alignment.center,
+                      height: 60,
+
+                      padding: EdgeInsets.fromLTRB(10, 20, 10, 0),
                       child: isLoading
                           ? CircularProgressIndicator()
-                          : MaterialButton(
+                          : MaterialButton(minWidth: 350,
                               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
                               elevation: 5,
                               textColor: Colors.white,
@@ -114,8 +108,8 @@ class _loginState extends State<login> {
                           'New user? Click to sign up!',
                           style: TextStyle(color: Colors.white),
                         ),
-                        height: 35,
-                        minWidth: 200,
+                        height: 40,
+                        minWidth: 350,
                         color: Colors.blueGrey,
                         onPressed: () {
                           showModalBottomSheet(
@@ -131,8 +125,8 @@ class _loginState extends State<login> {
                                           Text('Please confirm your password', style: TextStyle(fontSize: 16)),
                                           TextFormField(
                                               controller: _passwordValidation,
-                                              validator: (val) => val != _password.text ? 'Passwords do not match!' :
-                                              null,
+                                              validator: (val) =>
+                                                  val != _password.text ? 'Passwords must match!' : null,
                                               obscureText: true,
                                               decoration: InputDecoration(hintText: PasswordHint)),
                                           MaterialButton(
@@ -144,9 +138,9 @@ class _loginState extends State<login> {
                                               if (_formKey.currentState.validate()) {
                                                 if (!await widget.user.signUp(_email.text, _password.text)) {
                                                 } else {
-                                                  Navigator.pop(context); Navigator.pop(context);
+                                                  Navigator.pop(context);
+                                                  Navigator.pop(context);
                                                 }
-
                                               }
                                             },
                                           ),
@@ -157,6 +151,6 @@ class _loginState extends State<login> {
                         },
                       ))
                 ]))));
-    ;
+
   }
 }

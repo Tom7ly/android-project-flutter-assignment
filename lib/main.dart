@@ -8,7 +8,7 @@ import 'package:hello_me/UserRepository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:hello_me/login.dart';
-import 'package:hello_me/suggestions.dart';
+
 import 'package:snapping_sheet/snapping_sheet.dart';
 import 'dart:ui';
 import 'dart:io';
@@ -58,7 +58,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Welcome to Flutter',
       theme: ThemeData(
-        primaryColor: Colors.white,
+        primaryColor: Colors.red,
       ),
       home: RandomWords(),
     );
@@ -255,7 +255,7 @@ class _RandomWordsState extends State<RandomWords> {
         ).toList();
 
         return Scaffold(
-            key: _scaffoldKey,
+
             appBar: AppBar(
               backgroundColor: Colors.red,
               title: Text('Saved Suggestions'),
@@ -484,7 +484,7 @@ class _RandomWordsState extends State<RandomWords> {
                       ],
                       onSnapBegin: () {
                         setState(() {
-                          SnapPosition x = controller.snapPositions[0];
+
                           if (controller.currentSnapPosition ==
                               controller.snapPositions[0]) {
                             blurValue = 0;
